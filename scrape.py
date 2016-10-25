@@ -2,10 +2,10 @@ from bs4 import BeautifulSoup
 import urllib2
 import csv
 
-
 # WHAT TOPICS DO YOU WANT TO SEARCH FOR ?
+topic_to_scrape = raw_input("Keyword to search to search for: ")
 
-topic_to_scrape = 'technology' #one only
+#= 'technology' # one only
 
 
 url = "http://api.meetup.com/2/groups.xml/?&topic=" + topic_to_scrape +"&order=members&key=3137117152a38291415976a3fb23"
@@ -14,7 +14,7 @@ soup = BeautifulSoup(content,'xml')
 
 
 #choose output file name
-resultFile = open("results.csv", 'wb')
+resultFile = open(topic_to_scrape + ".csv", 'wb')
 wr = csv.writer(resultFile, dialect='excel')
 
 #Getting info from BeautifulSoup
